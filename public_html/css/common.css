@@ -2648,25 +2648,23 @@ td.contents2TxtBlue2 {
   width: 49%;
   height: 40px;
   float: left;
-  border-bottom: solid 1px #7092CC;
+  border-bottom: solid 1px #ddd;
   color: #13346E;
 }
 .column2 li.selected {
-  background-color: #7EA9E9;
+  background-color: #ddd;
 }
 .column2 li a {
   display: block;
   height: 100%;
   width: 100%;
-  /*	background: url(/img/common/icon_cur_blue2.png) no-repeat scroll right 50% transparent;
-*/
 }
 .column2 li.wide {
   width: 100%;
 }
 .column2 li.left {
   margin-right: -1px;
-  border-right: solid 1px #7092CC;
+  border-right: solid 1px #ddd;
 }
 .column2 li p {
   padding: 0 10px;
@@ -2684,58 +2682,6 @@ td.contents2TxtBlue2 {
   display: inline-block;
   float: left;
   margin-top: 2px;
-}
-.column2 li p.all {
-  background: url(/img/category/all.png) no-repeat;
-  background-position: 10px 5px;
-  background-size: 30px 30px;
-  width: 32px;
-  margin: 0 auto;
-  padding-left: 48px;
-  display: block;
-  line-height: 40px;
-}
-.column2 li p.ent {
-  background: url(/img/category/g_ent2.png) no-repeat;
-  background-position: 10px 5px;
-  background-size: 30px 30px;
-  padding-left: 45px;
-  padding-right: 0;
-}
-.column2 li p.life {
-  background: url(/img/category/g_life2.png) no-repeat;
-  background-position: 10px 5px;
-  background-size: 30px 30px;
-  padding-left: 45px;
-  padding-right: 0;
-}
-.column2 li p.politics {
-  background: url(/img/category/g_politics.png) no-repeat;
-  background-position: 10px 5px;
-  background-size: 30px 30px;
-  padding-left: 45px;
-  padding-right: 0;
-}
-.column2 li p.tech {
-  background: url(/img/category/g_tech.png) no-repeat;
-  background-position: 10px 5px;
-  background-size: 30px 30px;
-  padding-left: 45px;
-  padding-right: 0;
-}
-.column2 li p.culture {
-  background: url(/img/category/g_culture2.png) no-repeat;
-  background-position: 10px 5px;
-  background-size: 30px 30px;
-  padding-left: 45px;
-  padding-right: 0;
-}
-.column2 li p.other {
-  background: url(/img/category/g_other.png) no-repeat;
-  background-position: 10px 5px;
-  background-size: 30px 30px;
-  padding-left: 45px;
-  padding-right: 0;
 }
 .blomagaLink {
   background: url(/img/common/icon_blog.png) no-repeat;
@@ -3586,10 +3532,10 @@ div#chat_body_input input[type="submit"]:active {
   border-bottom: #999 solid 1px;
 }
 .column2 li {
-  border-bottom: solid 1px #999;
+  border-bottom: solid 1px #ddd;
 }
 .column2 li.left {
-  border-right: solid 1px #999;
+  border-right: solid 1px #ddd;
 }
 .moreViewBorderTop {
   border-top: solid 1px #999;
@@ -3836,4 +3782,12 @@ hr {
   font-size: 10px;
   background: #a1a1a1;
   border-radius: 3px;
+}
+.category p {
+  font-weight: bold;
+}
+.category p img {
+  width: 28px;
+  margin-right: 5px;
+  vertical-align: middle;
 }
