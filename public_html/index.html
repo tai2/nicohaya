@@ -35,71 +35,63 @@
   <script src="./js/jsCache.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
       jsCache.domReady(function() {
+              function cache_load(url, attr) {
                 // XXX:loadに複数の要素渡してappendすると、追加先が正しくならない。jsCacheのバグっぽい。
                 // 回避策として、loadを複数回呼び出すようにする。
                 jsCache.load({
-                    url : "img/thum/thumb012.jpg",
-                    append : $("span[src='img/thum/thumb012.jpg']"),
-                    attr : {
-                        width : "70",
-                        border : "0"
-                    }
+                    url : url,
+                    append : $("span[src='" + url + "']"),
+                    attr : attr
                 });
-                jsCache.load({
-                    url : "img/index/icon_4.png",
-                    append : $("span[src='img/index/icon_4.png']"),
-                    attr : {
-                        width : "7",
-                        height : "10",
-                        border : "0"
-                    }
-                });
-                jsCache.load({
-                    url : "img/index/icon_2.png",
-                    append : $("span[src='img/index/icon_2.png']"),
-                    attr : {
+              }
+
+              cache_load(
+                  "img/thum/thumb012.jpg",
+                  {
+                    width : "70",
+                    border : "0"
+                  });
+              cache_load(
+                  "img/index/icon_4.png",
+                  {
+                    width : "7",
+                    height : "10",
+                    border : "0"
+                  });
+              cache_load(
+                  "img/index/icon_2.png",
+                  {
                         width : "14",
                         height : "10",
                         border : "0"
-                    }
-                });
-                jsCache.load({
-                    url : "img/a121/361459.f689cc.jpg",
-                    append : $("span[src='img/a121/361459.f689cc.jpg']"),
-                    attr : {
+                  });
+              cache_load(
+                  "img/a121/361459.f689cc.jpg",
+                  {
                         width : "70",
                         border : "0"
-                    }
-                });
-                jsCache.load({
-                    url : "img/a35/102458.50f13f.jpg",
-                    append : $("span[src='img/a35/102458.50f13f.jpg']"),
-                    attr : {
+                  });
+              cache_load(
+                  "img/a35/102458.50f13f.jpg",
+                  {
                         width : "70",
                         border : "0"
-                    }
-                });
-                jsCache.load({
-                    url : "img/thum/thumb001.jpg",
-                    append : $("span[src='img/thum/thumb001.jpg']"),
-                    attr : {
+                  });
+              cache_load(
+                  "img/thum/thumb001.jpg",
+                  {
                         border : "0"
-                    }
-                });
-                jsCache.load({
-                    url : "img/uploader/pickupselection/0407.png",
-                    append : $("span[src='img/uploader/pickupselection/0407.png']"),
-                    attr : {
+                  });
+              cache_load(
+                  "img/uploader/pickupselection/0407.png",
+                  {
                         border : "0"
-                    }
-                });
-                jsCache.load({
-                    url : "img/thum/thumb002.jpg",
-                    append : $("span[src='img/thum/thumb002.jpg']"),
-                    attr : {
+                  });
+              cache_load(
+                  "img/thum/thumb002.jpg",
+                  {
                         border : "0"
-                    }
-                });
+                  });
               });
   </script>
 
