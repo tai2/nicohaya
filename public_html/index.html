@@ -480,22 +480,22 @@
   <h1 class="headline">カテゴリから探す</h1>
   <ul class="column2">
     <li class="left">
-      <a href="http://sp.nicovideo.jp/tag/g_ent2?cp_in=tg_tp_category"><p class="ent"><img src="img/category/g_ent2.png">エンタメ・音楽</p></a>
+    <a href="http://sp.nicovideo.jp/tag/g_ent2?cp_in=tg_tp_category"><p class="ent"><span src="img/category/g_ent2.png"></span>エンタメ・音楽</p></a>
     </li>
     <li>
-      <a href="http://sp.nicovideo.jp/tag/g_life2?cp_in=tg_tp_category"><p class="life"><img src="img/category/g_life2.png">生活・一般・スポ</p></a>
+    <a href="http://sp.nicovideo.jp/tag/g_life2?cp_in=tg_tp_category"><p class="life"><span src="img/category/g_life2.png"></span>生活・一般・スポ</p></a>
     </li>
     <li class="left">
-      <a href="http://sp.nicovideo.jp/tag/g_politics?cp_in=tg_tp_category"><p class="politics"><img src="img/category/g_politics.png">政治</p></a>
+    <a href="http://sp.nicovideo.jp/tag/g_politics?cp_in=tg_tp_category"><p class="politics"><span src="img/category/g_politics.png"></span>政治</p></a>
     </li>
     <li>
-      <a href="http://sp.nicovideo.jp/tag/g_tech?cp_in=tg_tp_category"><p class="tech"><img src="img/category/g_tech.png">科学・技術</p></a>
+      <a href="http://sp.nicovideo.jp/tag/g_tech?cp_in=tg_tp_category"><p class="tech"><span src="img/category/g_tech.png">科学・技術</p></a>
     </li>
     <li class="left">
-      <a href="http://sp.nicovideo.jp/tag/g_culture2?cp_in=tg_tp_category"><p class="culture"><img src="img/category/g_culture2.png">アニメ・ゲーム・絵</p></a>
+      <a href="http://sp.nicovideo.jp/tag/g_culture2?cp_in=tg_tp_category"><p class="culture"><span src="img/category/g_culture2.png">アニメ・ゲーム・絵</p></a>
     </li>
     <li>
-      <a href="http://sp.nicovideo.jp/tag/g_other?cp_in=tg_tp_category"><p class="other"><img src="img/category/all.png">その他</p></a>
+      <a href="http://sp.nicovideo.jp/tag/g_other?cp_in=tg_tp_category"><p class="other"><span src="img/category/all.png">その他</p></a>
     </li>
   </ul>
 </section>
@@ -837,6 +837,12 @@ if (document.location.protocol == "http:") {
                     height : "41",
                     border : "0"
                 });
+            cache_load("img/category/g_ent2.png", {});
+            cache_load("img/category/g_life2.png", {});
+            cache_load("img/category/g_politics.png", {});
+            cache_load("img/category/g_tech.png", {});
+            cache_load("img/category/g_culture2.png", {});
+            cache_load("img/category/all.png", {});
         });
 </script>
 
