@@ -35,16 +35,43 @@
   <script src="./js/jsCache.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
       jsCache.domReady(function() {
-                jsCache.load(
-                    {
-                        url : "img/thum/thumb012.jpg",
-                        append : $("#img_thum_thumb012")[0],
-                        attr : {
-                            width : "70",
-                            border : "0"
-                        }
+                // XXX:loadに複数の要素渡してappendすると、追加先が正しくならない。jsCacheのバグっぽい。
+                // 回避策として、loadを複数回呼び出すようにする。
+                jsCache.load({
+                    url : "img/thum/thumb012.jpg",
+                    append : $("#img_thum_thumb012")[0],
+                    attr : {
+                        width : "70",
+                        border : "0"
                     }
-                );
+                });
+                jsCache.load({
+                    url : "img/index/icon_4.png",
+                    append : $("#img_index_icon_4_1")[0],
+                    attr : {
+                        width : "7",
+                        height : "10",
+                        border : "0"
+                    }
+                });
+                jsCache.load({
+                    url : "img/index/icon_4.png",
+                    append : $("#img_index_icon_4_2")[0],
+                    attr : {
+                        width : "7",
+                        height : "10",
+                        border : "0"
+                    }
+                });
+                jsCache.load({
+                    url : "img/index/icon_4.png",
+                    append : $("#img_index_icon_4_3")[0],
+                    attr : {
+                        width : "7",
+                        height : "10",
+                        border : "0"
+                    }
+                });
               });
   </script>
 
@@ -151,7 +178,7 @@
           <p class="nowonair">NOW ON AIR!!</p>
           <p class="contents5Txt">ＮＹ大幅続落！日銀横にらみの東京市場は？　NIKKEI Channel＜Markets＞</p>
           <p class="iconimg">
-            <img src="./img/index/icon_4.png" width="7" height="10" border="0" />&nbsp;<span class="icontxt">1,337</span>&nbsp;&nbsp;&nbsp;
+            <span id="img_index_icon_4_1"></span>&nbsp;<span class="icontxt">1,337</span>&nbsp;&nbsp;&nbsp;
             <img src="./img/index/icon_2.png" width="14" height="10" border="0" />&nbsp;<span class="icontxt">5,042</span>
           </p>
         </td>
@@ -171,7 +198,7 @@
           <p class="nowonair">NOW ON AIR!!</p>
           <p class="contents5Txt">原発の高経年化技術評価等に係る審査会合</p>
           <p class="iconimg">
-            <img src="./img/index/icon_4.png" width="7" height="10" border="0" />&nbsp;<span class="icontxt">923</span>&nbsp;&nbsp;&nbsp;
+            <span id="img_index_icon_4_2"></span>&nbsp;<span class="icontxt">923</span>&nbsp;&nbsp;&nbsp;
             <img src="./img/index/icon_2.png" width="14" height="10" border="0" />&nbsp;<span class="icontxt">101</span>
           </p>
         </td>
@@ -191,7 +218,7 @@
           <p class="nowonair">NOW ON AIR!!</p>
           <p class="contents5Txt">【参議院 国会生中継】決算委員会</p>
           <p class="iconimg">
-            <img src="./img/index/icon_4.png" width="7" height="10" border="0" />&nbsp;<span class="icontxt">34,650</span>&nbsp;&nbsp;&nbsp;
+            <span id="img_index_icon_4_3"></span>&nbsp;<span class="icontxt">34,650</span>&nbsp;&nbsp;&nbsp;
             <img src="./img/index/icon_2.png" width="14" height="10" border="0" />&nbsp;<span class="icontxt">6,715</span>
           </p>
         </td>
