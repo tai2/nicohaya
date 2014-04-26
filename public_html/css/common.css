@@ -3788,6 +3788,7 @@ hr {
 .hotOnAir a.hotOnAirS .hotOnAirMeta {
   position: static;
   margin-top: -5px;
+  height: 110px;
 }
 .hotOnAir a.hotOnAirS + a {
   border-left: 1px solid #fff;
@@ -3830,7 +3831,7 @@ hr {
 }
 .ranking ol li .itemBlk .itemBlkInner .itemInfo .itemCountList li {
   color: #fff;
-  margin-right: 1px;
+  margin: 0 1px 1px 0;
   padding: 3px 5px;
   font-size: 10px;
   background: #a1a1a1;
