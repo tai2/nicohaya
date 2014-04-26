@@ -3619,28 +3619,32 @@ div.siteFooterBtn p {
 }
 
 .itemCountList .icons:before{
-    display: inline-block;
-    content: "";
-    height: 10px;
-    margin-right: 4px;
-    background-repeat: no-repeat;
-    background-position: left center;
+	position: relative;
+	top: 1px;
+  display: inline-block;
+  content: "";
+  height: 10px;
+  background-repeat: no-repeat;
 }
 
-.itemCountList .icons.viewCount:before{
-    width: 9px;
-    background-image: url(../img/index/icon_1.png);
+
+.viewCount:before,
+.commentCount:before,
+.mylistCount:before{
+	width: 15px;
+	background-image: url(../img/index/rank_info.png);
+	background-repeat: no-repeat;
 }
 
-.itemCountList .icons.commentCount:before{
-    width: 14px;
-    background-image: url(../img/index/icon_2.png);
-}
-
-.itemCountList .icons.mylistCount:before{
-    width: 11px;
-    background-image: url(../img/index/icon_3.png);
-}
+.viewCount:before{
+	background-position: 0 0;
+} 
+.commentCount:before{
+	background-position: 0 -60px;
+} 
+.mylistCount:before{
+	background-position: 0 -120px;
+} 
 
 .itemNum{
     color: #cb5a5a;
