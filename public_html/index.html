@@ -1,0 +1,845 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+  <meta http-equiv="content-style-type" content="text/css">
+  <meta http-equiv="content-script-type" content="text/javascript">
+  <meta name="keywords" content="ニコニコ動画,動画,コメント">
+  <meta name="description" content="｢ニコニコ動画｣は音楽・お笑い・アニメ・ゲームなどの動画再生中にコメントを付けて楽しむ動画コミュニティサイトです">
+  <title>niconico</title>
+  
+  <link rel="canonical" href="http://www.nicovideo.jp/" />
+  <link rel="shortcut icon" href="./img/favicon.ico" />
+  <link rel="apple-touch-icon" href="./img/apple-touch-icon-114x114.png" />
+
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/site_header.css">
+  <link rel="stylesheet" href="./css/special_pickup.css">
+  
+  <script src="http://cyouosoiserver.kunikiya.jp/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/common.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/jquery.showMenu.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/urchin.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    if (document.location.protocol == "http:") {
+      urchinTracker();
+    }
+  </script>
+  
+  <script src="./js/bookmarkbubble.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/bookmarkbubble_move.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/nicoapi.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="hdNoFixed">
+  <header role="banner" class="header global" id="jsSiteHeader">
+  <div class="hdInner">
+    
+    <div class="hdLogo">
+      <h1 class="hdTitle"><a href="http://sp.nicovideo.jp/?cp_in=header">niconico</a></h1>
+    </div>
+    <div class="hdNav">
+      <a role="button" class="hdButton search"></a>
+      <a role="button" class="hdButton menu"></a>
+    </div>
+  </div>
+
+  <div class="hdContent mdSearch">
+    <div class="hdContentInner">
+      <div class="hdContentSearch">
+        <p class="inputForm">
+          <input type="text" id="jsTopSearchText" value="" placeholder="キーワードまたはタグを入力" />
+        </p>
+        <p class="searchButtonWrap">
+          <input type="button" class="searchButton jsSearchButton" data-search-type="search" data-search-input-id="jsTopSearchText" value="キーワードから探す" />
+          <input type="button" class="searchButton jsSearchButton" data-search-type="tag" data-search-input-id="jsTopSearchText" value="タグから探す" />
+        </p>
+      </div>
+
+      <div class="hdContentNav">
+        <nav>
+          <ul>
+            <li>
+              <a href="http://sp.nicovideo.jp/search/" class="arrow arrow-back">カテゴリから探す</a>
+            </li>
+            <li>
+              <a href="http://sp.nicovideo.jp/ranking/fav/daily/all" class="arrow arrow-back">ランキングから探す</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="hdContent mdNavigation">
+    <div class="hdContentInner">
+      <div class="hdContentSignup">
+        <p class="btnWrap">
+          <a href="https://secure.nicovideo.jp/secure/login_form?next_url=%2F&amp;site=spniconico&amp;time=1396849680&amp;hash_key=ad801b07" class="btn signin">ログイン</a>
+        </p>
+        <p class="btnWrap">
+          <a href="https://secure.nicovideo.jp/secure/register_sms?next_url=%2F&amp;site=spniconico&amp;after_landing=1&amp;sec=sp_video&amp;sub=newaccount_header" class="btn signup">新規会員登録</a>
+        </p>
+      </div>
+      <div class="hdContentServiceList hdContentNav">
+        <div class="hdContentHeader">
+          <h2>サービス一覧</h2>
+        </div>
+        <div class="hdContentBody">
+          <ul class="itemList">
+            <li class="item top">
+              <a href="http://sp.nicovideo.jp/?cp_in=header">niconicoトップ / 動画</a>
+            </li>
+            <li class="item live arrow arrow-back">
+              <a href="http://sp.live.nicovideo.jp/?cp_in=header">生放送</a>
+            </li>
+            <li class="item channel arrow arrow-back">
+              <a href="http://sp.ch.nicovideo.jp/?cp_in=header">チャンネル</a>
+            </li>
+            <li class="item blomaga arrow arrow-back">
+              <a href="http://sp.ch.nicovideo.jp/portal/blomaga?cp_in=header">ブロマガ</a>
+            </li>
+            <li class="item book arrow arrow-back">
+              <a href="http://sp.book.nicovideo.jp/?cp_in=header">コミック・書籍</a>
+            </li>
+            <li class="item news arrow arrow-back">
+              <a href="http://news.nicovideo.jp/?cp_in=header">ニュース</a>
+            </li>
+            <li class="item blank"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+  
+<div class="loginLink">
+  <a href="https://secure.nicovideo.jp/secure/login_form?next_url=%2F&amp;site=spniconico&amp;time=1396849680&amp;hash_key=ad801b07"><span class="loginBtn bigrounded">ログイン</span></a>
+</div>
+<section id="sitetopInformation"></section>
+
+<div class="sp_ad" id="sp_header_ad">
+  <img src="./img/thum/ad.jpg" title="広告的ななにか" alt="広告的ななにか">
+</div>
+
+<input type="hidden" id="jsMiddleBannerZoneId" value="460" />
+
+<section>
+  <h1 class="headline">注目の生放送</h1>
+  <a href="http://live.nicovideo.jp/watch/lv174627802?cp_in=lvwt_tp_recom">
+    <table class="contents4" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td class="bnrBr"></td>
+        <td class="contents2Img">
+          <img src="./img/thum/thumb012.jpg" width="70" border="0" />
+        </td>
+        <td class="contents2TxtBlue2">
+          <p class="contents5Time">08:30～00:00&nbsp;</p>
+          <p class="nowonair">NOW ON AIR!!</p>
+          <p class="contents5Txt">ＮＹ大幅続落！日銀横にらみの東京市場は？　NIKKEI Channel＜Markets＞</p>
+          <p class="iconimg">
+            <img src="./img/index/icon_4.png" width="7" height="10" border="0" />&nbsp;<span class="icontxt">1,337</span>&nbsp;&nbsp;&nbsp;
+            <img src="./img/index/icon_2.png" width="14" height="10" border="0" />&nbsp;<span class="icontxt">5,042</span>
+          </p>
+        </td>
+        <td class="bnrBr"></td>
+      </tr>
+    </table>
+  </a>
+  <a href="http://live.nicovideo.jp/watch/lv174606960?cp_in=lvwt_tp_recom">
+    <table class="contents4" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td class="bnrBr"></td>
+        <td class="contents2Img">
+          <img src="./img/a121/361459.f689cc.jpg" width="70" border="0" />
+        </td>
+        <td class="contents2TxtBlue2">
+          <p class="contents5Time">10:30～18:30&nbsp;</p>
+          <p class="nowonair">NOW ON AIR!!</p>
+          <p class="contents5Txt">原発の高経年化技術評価等に係る審査会合</p>
+          <p class="iconimg">
+            <img src="./img/index/icon_4.png" width="7" height="10" border="0" />&nbsp;<span class="icontxt">923</span>&nbsp;&nbsp;&nbsp;
+            <img src="./img/index/icon_2.png" width="14" height="10" border="0" />&nbsp;<span class="icontxt">101</span>
+          </p>
+        </td>
+        <td class="bnrBr"></td>
+      </tr>
+    </table>
+  </a>
+  <a href="http://live.nicovideo.jp/watch/lv174962023?cp_in=lvwt_tp_recom">
+    <table class="contents4" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td class="bnrBr"></td>
+        <td class="contents2Img">
+          <img src="./img/a35/102458.50f13f.jpg" width="70" border="0" />
+        </td>
+        <td class="contents2TxtBlue2">
+          <p class="contents5Time">10:00～18:00&nbsp;</p>
+          <p class="nowonair">NOW ON AIR!!</p>
+          <p class="contents5Txt">【参議院 国会生中継】決算委員会</p>
+          <p class="iconimg">
+            <img src="./img/index/icon_4.png" width="7" height="10" border="0" />&nbsp;<span class="icontxt">34,650</span>&nbsp;&nbsp;&nbsp;
+            <img src="./img/index/icon_2.png" width="14" height="10" border="0" />&nbsp;<span class="icontxt">6,715</span>
+          </p>
+        </td>
+        <td class="bnrBr"></td>
+      </tr>
+    </table>
+  </a>
+  <a href="http://sp.live.nicovideo.jp/">
+    <div class="moreViewBorderBottom">
+      今後の番組一覧を見る
+    </div>
+  </a>
+  <a href="daily_topics/20140407">
+    <div class="moreViewBorderBottom">
+      おすすめ生放送をもっと見る
+    </div>
+  </a>
+</section>
+<section>
+  <h1 class="headline">本日のオススメ！</h1>
+  <a href="http://rd.nicovideo.jp/cc/sp_top/mushishi02" title="ヒトと蟲との世を繋ぐ者──それが“蟲師”。「蟲師 続章」配信中！" target="_blank">
+    <table class="contents4" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td class="bnrBr"></td>
+        <td class="contents2Img">
+          <img src="./img/thum/thumb001.jpg" border="0" alt="ヒトと蟲との世を繋ぐ者──それが“蟲師”。「蟲師 続章」配信中！     " />
+        </td>
+        <td class="contents2TxtBlue2">
+          ヒトと蟲との世を繋ぐ者──それが“蟲師”。「蟲師 続章」配信中！<br />
+        </td>
+        <td class="bnrBr"></td>
+      </tr>
+    </table>
+  </a>
+  <a href="http://rd.nicovideo.jp/cc/sp_top/cho3cdsp0407" title="【超会議３】きのこの山とたけのこの里を判別？！作ってみた大集合！【開催まであと19日】" target="_blank">
+    <table class="contents4" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td class="bnrBr"></td>
+        <td class="contents2Img">
+          <img src="./img/uploader/pickupselection/0407.png" border="0" alt="【超会議３】きのこの山とたけのこの里を判別？！作ってみた大集合！【開催まであと19日】      " />
+        </td>
+        <td class="contents2TxtBlue2">
+          【超会議３】きのこの山とたけのこの里を判別？！作ってみた大集合！【開催まであと19日】<br />
+        </td>
+        <td class="bnrBr"></td>
+      </tr>
+    </table>
+  </a>
+  <a href="http://rd.nicovideo.jp/cc/sp_top/bkchaika0406" title="2014年春アニメ『棺姫のチャイカ』が期間限定1巻無料！" target="_blank">
+    <table class="contents4" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td class="bnrBr"></td>
+        <td class="contents2Img">
+          <img src="./img/thum/thumb002.jpg" border="0" alt="2014年春アニメ『棺姫のチャイカ』が期間限定1巻無料！      " />
+        </td>
+        <td class="contents2TxtBlue2">
+          2014年春アニメ『棺姫のチャイカ』が期間限定1巻無料！<br />
+        </td>
+        <td class="bnrBr"></td>
+      </tr>
+    </table>
+  </a>
+</section>
+<section>
+  <h1 class="headline">2014/04/07&nbsp;動画ランキング</h1>
+  <ol>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23261200?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23261200.jpg" alt="" />
+            <span class="relateInfo">36:35</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/05 17:40<span class="separate">投稿</span></p>
+            <p class="itemTitle">クソゲーオブザイヤー2012</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">354,809</span></li>
+              <li><span class="icons commentCount">27,107</span></li>
+              <li><span class="icons mylistCount">7,584</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">1</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23270118?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23270118.jpg" alt="" />
+            <span class="relateInfo">3:46</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/06 18:20<span class="separate">投稿</span></p>
+            <p class="itemTitle">シャフト☆ハリケーン【合作MAD】</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">59,216</span></li>
+              <li><span class="icons commentCount">696</span></li>
+              <li><span class="icons mylistCount">16,808</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">2</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23154338?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23154338.jpg" alt="" />
+            <span class="relateInfo">2:15</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/03/23 00:57<span class="separate">投稿</span></p>
+            <p class="itemTitle">【MAD】のんのんびより【修正版】</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">97,414</span></li>
+              <li><span class="icons commentCount">752</span></li>
+              <li><span class="icons mylistCount">11,872</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">3</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23254661?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23254661.jpg" alt="" />
+            <span class="relateInfo">1:58</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/04 21:02<span class="separate">投稿</span></p>
+            <p class="itemTitle">【なぜベストを尽くしたのか】CGのプ…</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">420,794</span></li>
+              <li><span class="icons commentCount">3,330</span></li>
+              <li><span class="icons mylistCount">13,231</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">4</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23266767?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23266767.jpg" alt="" />
+            <span class="relateInfo">22:38</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/06 10:00<span class="separate">投稿</span></p>
+            <p class="itemTitle">最強のピッチャーをつくろう！【パワ…</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">209,252</span></li>
+              <li><span class="icons commentCount">6,118</span></li>
+              <li><span class="icons mylistCount">3,871</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">5</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23259485?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23259485.jpg" alt="" />
+            <span class="relateInfo">3:26</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/05 20:00<span class="separate">投稿</span></p>
+            <p class="itemTitle">纏物語　こよみトゥーシング</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">96,268</span></li>
+              <li><span class="icons commentCount">801</span></li>
+              <li><span class="icons mylistCount">10,062</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">6</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23249476?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23249476.jpg" alt="" />
+            <span class="relateInfo">1:31</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/04 01:14<span class="separate">投稿</span></p>
+            <p class="itemTitle">MAD　まどか☆マギカ-ハピネスチャージ…</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">85,481</span></li>
+              <li><span class="icons commentCount">607</span></li>
+              <li><span class="icons mylistCount">7,245</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">7</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/sm23268290?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23268290.jpg" alt="" />
+            <span class="relateInfo">4:43</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/06 14:00<span class="separate">投稿</span></p>
+            <p class="itemTitle">ひたすら楽してＦＦ６ part11</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">101,010</span></li>
+              <li><span class="icons commentCount">2,182</span></li>
+              <li><span class="icons mylistCount">2,279</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">8</span>
+    </li>
+    <li style="position:relative;">
+      <a href="http://sp.nicovideo.jp/watch/1396515246?cp_in=wt_tp_rk" class="itemBlk">
+        <div class="itemBlkInner">
+          <div class="itemMedia video">
+            <img src="./img/smile/23245819.jpg" alt="" />
+            <span class="relateInfo">0:15</span>
+          </div>
+          <div class="itemInfo">
+            <p class="itemDate">2014/04/06 00:00<span class="separate">投稿</span></p>
+            <p class="itemTitle">メカクシティアクターズ 番宣映像（ア…</p>
+            <ul class="itemCountList">
+              <li><span class="icons viewCount">223,127</span></li>
+              <li><span class="icons commentCount">3,733</span></li>
+              <li><span class="icons mylistCount">4,151</span></li>
+            </ul>
+          </div>
+        </div>
+      </a>
+      <span class="itemNum">9</span>
+    </li>
+  </ol>
+  <a href="http://sp.nicovideo.jp/ranking?cp_in=rk_tp_rk">
+    <div class="moreViewBorderBottom">ランキングをもっと見る</div>
+  </a>
+</section>
+
+<section>
+  <h1 class="headline">ニコニコニュース</h1>  
+  <ol class="textList">
+    <li>
+      <a href="http://news.nicovideo.jp/watch/nw1018851?cp_in=nwwt_tp">
+      <div>
+        <p>日豪 牛肉関税20%台に下げ合意へ</p>
+      </div>
+      </a>
+    </li>
+    <li><a href="http://news.nicovideo.jp/watch/nw1018946?cp_in=nwwt_tp">
+      <div>
+        <p>京都に32歳全国最年少町長が誕生</p>
+      </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://news.nicovideo.jp/watch/nw1019198?cp_in=nwwt_tp">
+        <div>
+          <p>不明機のレコーダー、電池限界</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://news.nicovideo.jp/watch/nw1018972?cp_in=nwwt_tp">
+        <div>
+          <p>幻の日本初・実用四駆が復活へ</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://news.nicovideo.jp/watch/nw1019123?cp_in=nwwt_tp">
+        <div>
+          <p>釈由美子「人間不信になりそう」</p>
+        </div>
+      </a>
+    </li>
+  </ol>
+  <a href="http://news.nicovideo.jp/?cp_in=nwtp_tp">
+    <div class="moreViewBorderBottom">ニコニコニュースをもっと見る</div>
+  </a>
+</section>
+
+<div id="middleBanner" class="middleBanner">
+  <img src="./img/thum/ad.jpg" title="広告的ななにか" alt="広告的ななにか">
+</div>
+
+<section>
+  <h1 class="headline">注目のワード</h1>
+  <ul class="column2">
+    <li class="left">
+      <a href="/tag/%E5%A0%BA%E9%9B%85%E4%BA%BA?cp_in=tag_tp_hotword">
+        <p>堺雅人</p>
+      </a>
+    </li>
+    <li>
+      <a href="/tag/%E3%82%BD%E3%83%81%E4%BA%94%E8%BC%AA?cp_in=tag_tp_hotword">
+        <p>ソチ五輪</p>
+      </a>
+    </li>
+    <li class="left">
+      <a href="/tag/%E6%B0%B8%E4%BA%95%E4%B8%80%E9%83%8E?cp_in=tag_tp_hotword">
+        <p>永井一郎</p>
+      </a>
+    </li>
+    <li>
+      <a href="/tag/THE%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%82%B3%E3%83%BC%E3%82%B9%E3%82%BF%E3%83%BC?cp_in=tag_tp_hotword">
+        <p>THEジェットコースター</p>
+      </a>
+    </li>
+    <li class="left">
+      <a href="/tag/%E7%AF%80%E5%88%86?cp_in=tag_tp_hotword">
+        <p>節分</p>
+      </a>
+    </li>
+    <li>
+      <a href="/tag/PS4?cp_in=tag_tp_hotword">
+        <p>PS4</p>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h1 class="headline">ブロマガ人気記事</h1>
+  <ol class="textList textListBorderTop">
+    <li>
+      <a href="http://ch.nicovideo.jp/article/ar500136?cp_in=chblog_matomeart_tp">
+        <div>
+          <p>オタクたちの「卒業」しない生き方って？</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://ch.nicovideo.jp/article/ar478618?cp_in=chblog_matomeart_tp">
+        <div>
+          <p>何かがおかしいのではなく何もかもおか…</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://ch.nicovideo.jp/article/ar500838?cp_in=chblog_matomeart_tp">
+        <div>
+          <p>【画像】ガンプラ制作体験会に行ってきた</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://chomatomesh.blomaga.jp/articles/23527.html?cp_in=chblog_matomeart_tp">
+        <div>
+          <p>店員にタメ口で話す奴ｗｗｗｗｗｗｗ</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://lovelive.blomaga.jp/articles/32798.html?cp_in=chblog_matomeart_tp">
+        <div>
+          <p>「ラブライブ！」TVアニメ2期Blu-ray１…</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://ch.nicovideo.jp/shukanbunshun/blomaga/ar497276">
+        <div>
+          <p class="full-text">悲願の宝塚合格 君島十和子が磨き上げた16歳愛娘の将来性</p>
+        </div>
+      </a>
+    </li>
+  </ol>
+  <a href="http://sp.ch.nicovideo.jp/blog/?cp_in=chblog_tp">
+    <div class="moreView">人気記事をもっと見る</div>
+  </a>
+</section>
+
+<section>
+  <h1 class="headline">カテゴリから探す</h1>
+  <ul class="column2">
+    <li class="left">
+      <a href="http://sp.nicovideo.jp/tag/g_ent2?cp_in=tg_tp_category"><p class="ent">エンタメ・音楽</p></a>
+    </li>
+    <li>
+      <a href="http://sp.nicovideo.jp/tag/g_life2?cp_in=tg_tp_category"><p class="life">生活・一般・スポ</p></a>
+    </li>
+    <li class="left">
+      <a href="http://sp.nicovideo.jp/tag/g_politics?cp_in=tg_tp_category"><p class="politics">政治</p></a>
+    </li>
+    <li>
+      <a href="http://sp.nicovideo.jp/tag/g_tech?cp_in=tg_tp_category"><p class="tech">科学・技術</p></a>
+    </li>
+    <li class="left">
+      <a href="http://sp.nicovideo.jp/tag/g_culture2?cp_in=tg_tp_category"><p class="culture">アニメ・ゲーム・絵</p></a>
+    </li>
+    <li>
+      <a href="http://sp.nicovideo.jp/tag/g_other?cp_in=tg_tp_category"><p class="other">その他</p></a>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h1 class="headline">注目のVOCALOID作品</h1>
+  <a href="http://sp.nicovideo.jp/watch/sm23230612" class="itemBlk">
+    <div class="itemBlkInner">
+      <div class="itemMedia video">
+        <img src="./img/smile/23230612.jpg" alt="" />
+        <span class="relateInfo">3:48</span>
+      </div>
+      <div class="itemInfo">
+        <p class="itemDate">2014/04/01 18:00<span class="separate">投稿</span></p>
+        <p class="itemTitle">【鏡音リン】嘘みたいな思い出〜ハイ…</p>
+        <ul class="itemCountList">
+          <li><span class="icons viewCount">31,924</span></li>
+          <li><span class="icons commentCount">1,419</span></li>
+          <li><span class="icons mylistCount">2,560</span></li>
+        </ul>
+      </div>
+    </div>
+  </a>
+  <a href="http://sp.nicovideo.jp/watch/sm22960446" class="itemBlk">
+    <div class="itemBlkInner">
+      <div class="itemMedia video">
+        <img src="./img/smile/22960446.jpg" alt="" />
+        <span class="relateInfo">3:58</span>
+      </div>
+      <div class="itemInfo">
+        <p class="itemDate">2014/02/24 19:05<span class="separate">投稿</span></p>
+        <p class="itemTitle">【初音ミク】 ウミユリ海底譚 【オリ…</p>
+        <ul class="itemCountList">
+          <li><span class="icons viewCount">352,304</span></li>
+          <li><span class="icons commentCount">11,810</span></li>
+          <li><span class="icons mylistCount">27,618</span></li>
+        </ul>
+      </div>
+    </div>
+  </a>
+  <a href="http://sp.nicovideo.jp/watch/sm15751190" class="itemBlk">
+    <div class="itemBlkInner">
+      <div class="itemMedia video">
+        <img src="./img/smile/15751190.jpg" alt="" />
+        <span class="relateInfo">3:54</span>
+      </div>
+      <div class="itemInfo">
+        <p class="itemDate">2011/09/30 07:06<span class="separate">投稿</span></p>
+        <p class="itemTitle">【初音ミク】カゲロウデイズ【オリジ…</p>
+        <ul class="itemCountList">
+          <li><span class="icons viewCount">3,810,315</span></li>
+          <li><span class="icons commentCount">294,013</span></li>
+          <li><span class="icons mylistCount">117,531</span></li>
+        </ul>
+      </div>
+    </div>
+  </a>
+  <a href="http://ex.nicovideo.jp/vocaloid?cp_in=ev_tp">
+    <div class="moreView">VOCALOID作品をもっと見る</div>
+  </a>
+</section>
+
+<section>
+  <h1 class="headline">オススメのアニメ</h1>
+  <ul class="column3">
+    <li>
+      <a href="http://sp.ch.nicovideo.jp/channel/ch2585610?cp_in=ch_tp_anime">
+        <div>
+          <img src="./img/thum/thumb024.jpg" width="100" height="100" border="0" />
+          <p>咲-Saki-全国編</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://sp.ch.nicovideo.jp/channel/ch2590206?cp_in=ch_tp_anime">
+        <div>
+          <img src="./img/thum/thumb025.jpg" width="100" height="100" border="0" />
+          <p>蟲師 続章</p>
+        </div>
+      </a>
+    </li>
+    <li>
+      <a href="http://sp.ch.nicovideo.jp/channel/ch2585705?cp_in=ch_tp_anime">
+        <div>
+          <img src="./img/thum/thumb023.jpg" width="100" height="100" border="0" />
+          <p>ハマトラ</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <a href="http://sp.ch.nicovideo.jp/menu/anime/?cp_in=ch_tp_anime">
+    <div class="moreViewBorderTopAndBottom">オススメのアニメをもっと見る</div>
+  </a>
+</section>
+
+<section id="jsCategoryAlliance" style="display:none;">
+  <h1 class="headline">注目のコンテンツ</h1>
+  <div class="jsCategoryAllianceTopAd categoryAllianceTopAd" style="display:none;">
+    <a target="_blank">
+      <img alt="" border="0">
+      <span></span>
+    </a>
+  </div>
+  <nav>
+    <ul class="column2">
+      <li class="left" style="display:none;">
+        <a target="_blank">
+          <p>
+            <i><img border="0" width="17" height="17" alt="" /></i>
+            <span></span>
+          </p>
+        </a>
+      </li>
+      <li class="left" style="display:none;">
+        <a target="_blank">
+          <p>
+            <i><img border="0" width="17" height="17" alt="" /></i>
+            <span></span>
+          </p>
+        </a>
+      </li>
+      <li class="left" style="display:none;">
+        <a target="_blank">
+          <p>
+            <i><img border="0" width="17" height="17" alt="" /></i>
+            <span></span>
+          </p>
+        </a>
+      </li>
+      <li class="left" style="display:none;">
+        <a target="_blank">
+          <p>
+            <i><img border="0" width="17" height="17" alt="" /></i>
+            <span></span>
+          </p>
+        </a>
+      </li>
+      <li class="left" style="display:none;">
+        <a target="_blank">
+          <p>
+            <i><img border="0" width="17" height="17" alt="" /></i>
+            <span></span>
+          </p>
+        </a>
+      </li>
+      <li class="left" style="display:none;">
+        <a target="_blank">
+          <p>
+            <i><img border="0" width="17" height="17" alt="" /></i>
+            <span></span>
+          </p>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<script src="/js/categoryalliance.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(function() {
+  Nico_CategoryAllianceController.setAdsBaseUrl("http://ads.nicovideo.jp/");
+  Nico_CategoryAllianceController.setCategoryAllianceArea("#jsCategoryAlliance");
+  Nico_CategoryAllianceController.fetchAdsList([271,271,271,271,271,271]);
+  Nico_CategoryAllianceController.fetchTopAd(466);
+});
+</script>
+
+
+
+<section>
+  <h1 class="headline">ニコニコインフォ</h1>
+  <ol class="textList">
+    <li>
+      <a href="http://blog.nicovideo.jp/niconews/ni045533.html?cp_webto=nicoinfo_tp">
+        <p>ドラゴンクエストX選考結果＆超パ仮面特…</p>
+      </a>
+    </li>
+    <li>
+      <a href="http://blog.nicovideo.jp/niconews/ni045543.html?cp_webto=nicoinfo_tp">
+        <p>超会議３に「磯部磯兵衛物語～浮世はつ…</p>
+      </a>
+    </li>
+    <li>
+      <a href="http://blog.nicovideo.jp/niconews/ni045532.html?cp_webto=nicoinfo_tp">
+        <p>情熱大陸 4/13放送決定！【電王戦】</p>
+      </a>
+    </li>
+    <li>
+      <a href="http://blog.nicovideo.jp/niconews/ni045513.html?cp_webto=nicoinfo_tp">
+        <p>あのママと予習しよう！超会議３「お絵…</p>
+      </a>
+    </li>
+    <a href="http://sp.nicovideo.jp/info/pickup/?cp_in=infolist_tp">
+      <div class="moreViewBorderBottom">もっと見る</div>
+    </a>
+  </ol>
+</section>
+
+<div id="jsBookmarkBubble" class="bookmarkBubble" style="display:none;">
+  <div class="bookmarkBubbleInner">
+    <div class="bookmarkBubbleAppleTouchImage"></div>
+    <p><b>ニコニコへ<br>すぐアクセス！</b></p>
+    <p id="jsBookmarkBubble1" style="clear:both;margin-left:10px; display:none;">
+      画面下部の<img src="./img/bookmark/browsingicon.png" width="20" border="0">ボタンから<br>
+      <b>ホーム画面に追加</b>しよう！
+    </p>
+    <p id="jsBookmarkBubble2" style="clear:both;margin-left:10px; display:none;">
+      画面下部の<b style="font-size:15px">+</b>ボタンから<br>
+      <b>ホーム画面に追加</b>しよう！
+    </p>
+  </div>
+  <a id="jsBookmarkBubbleClose" class="bookmarkBubbleClose"></a>
+</div>
+
+<div class="sp_ad_f" id="sp_footer_ad">
+  <img src="./img/thum/ad.jpg" title="広告的ななにか" alt="広告的ななにか">
+</div>
+    
+  
+<div class="SocialBtn">
+  <div class="SocialBtnImg">
+    <a href="https://twitter.com/nico_nico_info">
+      <img src="./img/common/snsbtn_twitter.png" width="140" height="41" border="0" />
+    </a>
+  </div>
+  <div class="SocialBtnImg">
+    <a href="http://www.facebook.com/niconico.official">
+      <img src="./img/common/snsbtn_facebook.png" width="140" height="41" border="0" />
+    </a>
+  </div>
+</div>
+
+<section class="gradient01 footer"> 
+  <p style="padding:12px 0 0 0; margin-bottom: 12px;">
+    <a href="http://info.nicovideo.jp/sp/rule">利用規約</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="http://info.nicovideo.jp/sp/tokutei" style="margin-right: 12px;">特定商取引法</a>
+    <a href="http://help.nicovideo.jp/sp_video/">ヘルプ</a>
+  </p>
+  <p class="user-control"><a href="http://sp.nicovideo.jp/change_mode?mode=pc&amp;uri=%2F">PC表示に切り替え</a><a href="https://secure.nicovideo.jp/secure/register_sms?next_url=%2F&amp;site=spniconico&amp;after_landing=1&amp;sec=sp_video&amp;sub=header" style="margin-left: 10px;">新規会員登録</a></p>
+  <div class="siteFooterBtn">
+    <a style="color:#FFF;" href="https://secure.nicovideo.jp/payment/?site=spniconico&amp;next_url=%2F&amp;sec=sp_video&amp;sub=nologin_footer">
+      <p>プレミアム登録</p>
+    </a>
+  </div>
+  <p style="padding:7px 0 15px 0;">&copy;niwango, inc. photo by pakutaso.com</p>
+</section>
+
+<input type="hidden" id="jsBaseUrl" value="http://sp.nicovideo.jp/" />
+<input type="hidden" id="jsRequestedTime" value="1396849680" />
+<input type="hidden" id="jsNotifyBaseUrl" value="http://notify.nicovideo.jp/" />
+<input type="hidden" id="jsSiteId" value="spniconico" />
+<input type="hidden" id="jsNotifySiteId" value="spweb" />
+<input type="hidden" id="jsOperatingSystem" value="iOS" />
+<input type="hidden" id="jsDevice" value="iPhone" />
+
+</body>
+</html>

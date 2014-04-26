@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/*--------------------------------------
+  コスプレ企画スペシャルピックアップ枠
+---------------------------------------*/
+
+.cosplayBox {
+	width:100%;
+	line-height:0;
+}
+
+.cosplayBox img {
+	width:100%;
+}
+
+.frPickup{
+	width: 100%;
+	border-bottom: #999 solid 1px;
+}
+
+.frPickup a{
+	display: block;
+	width: 96%;
+	margin: 2% auto;
+}
