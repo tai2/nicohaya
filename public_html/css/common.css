@@ -2682,8 +2682,10 @@ td.contents2TxtBlue2 {
   display: inline-block;
   margin-top: 2px;
 }
-.culture {
+.column2 li span:nth-child(5th) {
+  display: inline-block;
   float: left;
+  margin-top: 2px;
 }
 .blomagaLink {
   background: url(/img/common/icon_blog.png) no-repeat;
