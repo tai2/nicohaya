@@ -17,118 +17,6 @@
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/site_header.css">
   <link rel="stylesheet" href="./css/special_pickup.css">
-  
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/common.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/jquery.showMenu.js" type="text/javascript" charset="utf-8"></script>
-  <script src="./js/urchin.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript">
-    if (document.location.protocol == "http:") {
-      urchinTracker();
-    }
-  </script>
-  
-  <script src="./js/nicoapi.js" type="text/javascript" charset="utf-8"></script>
-
-  <script src="./js/jsCache.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript">
-      jsCache.domReady(function() {
-              function cache_load(url, attr) {
-                // XXX:loadに複数の要素渡してappendすると、追加先が正しくならない。jsCacheのバグっぽい。
-                // 回避策として、loadを複数回呼び出すようにする。
-                jsCache.load({
-                    url : url,
-                    append : $("span[src='" + url + "']"),
-                    attr : attr
-                });
-              }
-
-              cache_load(
-                  "img/thum/thumb012.jpg",
-                  {
-                    width : "70",
-                    border : "0"
-                  });
-              cache_load(
-                  "img/index/icon_4.png",
-                  {
-                    width : "7",
-                    height : "10",
-                    border : "0"
-                  });
-              cache_load(
-                  "img/index/icon_2.png",
-                  {
-                        width : "14",
-                        height : "10",
-                        border : "0"
-                  });
-              cache_load(
-                  "img/a121/361459.f689cc.jpg",
-                  {
-                        width : "70",
-                        border : "0"
-                  });
-              cache_load(
-                  "img/a35/102458.50f13f.jpg",
-                  {
-                        width : "70",
-                        border : "0"
-                  });
-              cache_load("img/thum/thumb001.jpg", {border : "0"});
-              cache_load("img/uploader/pickupselection/0407.png", {border : "0"});
-              cache_load("img/thum/thumb002.jpg", {border : "0"});
-              cache_load("img/smile/23261200.jpg", {});
-              cache_load("img/smile/23270118.jpg", {});
-              cache_load("img/smile/23154338.jpg", {});
-              cache_load("img/smile/23254661.jpg", {});
-              cache_load("img/smile/23266767.jpg", {});
-              cache_load("img/smile/23259485.jpg", {});
-              cache_load("img/smile/23249476.jpg", {});
-              cache_load("img/smile/23268290.jpg", {});
-              cache_load("img/smile/23245819.jpg", {});
-              cache_load("img/thum/ad.jpg", {});
-              cache_load("img/smile/23230612.jpg", {});
-              cache_load("img/smile/22960446.jpg", {});
-              cache_load("img/smile/15751190.jpg", {});
-              cache_load(
-                  "img/thum/thumb024.jpg",
-                  {
-                        width : "100",
-                        height : "100",
-                        border : "0"
-                  });
-              cache_load(
-                  "img/thum/thumb025.jpg",
-                  {
-                        width : "100",
-                        height : "100",
-                        border : "0"
-                  });
-              cache_load(
-                  "img/thum/thumb023.jpg",
-                  {
-                        width : "100",
-                        height : "100",
-                        border : "0"
-                  });
-              cache_load(
-                  "img/common/snsbtn_twitter.png",
-                  {
-                        width : "140",
-                        height : "41",
-                        border : "0"
-                  });
-              cache_load(
-                  "img/common/snsbtn_facebook.png",
-                  {
-                        width : "140",
-                        height : "41",
-                        border : "0"
-                  });
-            });
-  </script>
-
 </head>
 <body class="hdNoFixed">
   <header role="banner" class="header global" id="jsSiteHeader">
@@ -906,6 +794,115 @@
 <input type="hidden" id="jsNotifySiteId" value="spweb" />
 <input type="hidden" id="jsOperatingSystem" value="iOS" />
 <input type="hidden" id="jsDevice" value="iPhone" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/jquery.showMenu.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/urchin.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+if (document.location.protocol == "http:") {
+    urchinTracker();
+}
+</script>
+<script src="./js/nicoapi.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/jsCache.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    jsCache.domReady(function() {
+            function cache_load(url, attr) {
+            // XXX:loadに複数の要素渡してappendすると、追加先が正しくならない。jsCacheのバグっぽい。
+            // 回避策として、loadを複数回呼び出すようにする。
+            jsCache.load({
+                url : url,
+                append : $("span[src='" + url + "']"),
+                attr : attr
+            });
+            }
+
+            cache_load(
+                "img/thum/thumb012.jpg",
+                {
+                    width : "70",
+                    border : "0"
+                });
+            cache_load(
+                "img/index/icon_4.png",
+                {
+                    width : "7",
+                    height : "10",
+                    border : "0"
+                });
+            cache_load(
+                "img/index/icon_2.png",
+                {
+                    width : "14",
+                    height : "10",
+                    border : "0"
+                });
+            cache_load(
+                "img/a121/361459.f689cc.jpg",
+                {
+                    width : "70",
+                    border : "0"
+                });
+            cache_load(
+                "img/a35/102458.50f13f.jpg",
+                {
+                    width : "70",
+                    border : "0"
+                });
+            cache_load("img/thum/thumb001.jpg", {border : "0"});
+            cache_load("img/uploader/pickupselection/0407.png", {border : "0"});
+            cache_load("img/thum/thumb002.jpg", {border : "0"});
+            cache_load("img/smile/23261200.jpg", {});
+            cache_load("img/smile/23270118.jpg", {});
+            cache_load("img/smile/23154338.jpg", {});
+            cache_load("img/smile/23254661.jpg", {});
+            cache_load("img/smile/23266767.jpg", {});
+            cache_load("img/smile/23259485.jpg", {});
+            cache_load("img/smile/23249476.jpg", {});
+            cache_load("img/smile/23268290.jpg", {});
+            cache_load("img/smile/23245819.jpg", {});
+            cache_load("img/thum/ad.jpg", {});
+            cache_load("img/smile/23230612.jpg", {});
+            cache_load("img/smile/22960446.jpg", {});
+            cache_load("img/smile/15751190.jpg", {});
+            cache_load(
+                "img/thum/thumb024.jpg",
+                {
+                    width : "100",
+                    height : "100",
+                    border : "0"
+                });
+            cache_load(
+                "img/thum/thumb025.jpg",
+                {
+                    width : "100",
+                    height : "100",
+                    border : "0"
+                });
+            cache_load(
+                "img/thum/thumb023.jpg",
+                {
+                    width : "100",
+                    height : "100",
+                    border : "0"
+                });
+            cache_load(
+                "img/common/snsbtn_twitter.png",
+                {
+                    width : "140",
+                    height : "41",
+                    border : "0"
+                });
+            cache_load(
+                "img/common/snsbtn_facebook.png",
+                {
+                    width : "140",
+                    height : "41",
+                    border : "0"
+                });
+        });
+</script>
 
 </body>
 </html>
