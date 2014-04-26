@@ -660,7 +660,7 @@ svg, image, base64, ttrue, boolt, boolf, nil) {
 		/**
 		 * Function that loads image from URL or cache.
 		 */
-		loadImg = function(obj, cb) {
+		loadImg = function(obj, cb, append_index) {
 			var elm = new Image(), timer, source = obj, done = boolf,
 
 			/* Function called when the image has been loaded */
@@ -708,8 +708,13 @@ svg, image, base64, ttrue, boolt, boolf, nil) {
 			makeAttributes(source.attr, elm);
 
 			/* Append the image to the DOM */
-			if (source.append && typeof source.append === object) {
-				source.append.parentNode.insertBefore(elm, source.append);
+			if (source.append) {
+                            if (source.append instanceof jQuery) {
+                                var append = source.append[append_index];
+                                append.parentNode.insertBefore(elm, append);
+                            } else if (typeof source.append === object) {
+                                source.append.parentNode.insertBefore(elm, source.append);
+                            }
 			} else {
 				d.body.insertBefore(elm, d.body.lastChild.nextSibling);
 			}
@@ -863,7 +868,13 @@ svg, image, base64, ttrue, boolt, boolf, nil) {
 						} else if (type === css) {
 							loadStyle.call(this, obj, onload);
 						} else if (type === img) {
-							loadImg.call(this, obj, onload);
+                                                    if (obj.append && obj.append instanceof jQuery) {
+                                                        obj.append.each(function(index, elem) {
+                                                            loadImg.call(this, obj, onload, index);
+                                                        });
+                                                    } else {
+                                                        loadImg.call(this, obj, onload);
+                                                    }
 						}
 					}
 				};
